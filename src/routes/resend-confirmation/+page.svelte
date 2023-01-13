@@ -8,7 +8,7 @@
 </script>
 
 <main class="container flex flex-col mx-auto p-10 justify-center max-w-md">
-	<h1 class="text-2xl font-bold text-center p-5">Register</h1>
+	<h1 class="text-2xl font-bold text-center p-5">Resend Confirmation Email</h1>
 	{#if form}
 		{#if form.success}
 			<div class="p-2 my-2 bg-green-500 text-white text-center rounded-md">{form.message}</div>
@@ -29,22 +29,15 @@
 						id="email"
 						name="email"
 					/>
-					<label for="password">Password</label>
-					<input
-						class="appearance-none border border-white/20 focus:outline-none focus:border-white/25 bg-black p-2 my-2"
-						type="password"
-						id="password"
-						name="password"
-					/>
-					<button class="w-full bg-blue-600 hover:bg-blue-700 p-2 mt-2">Register</button>
+					<button class="w-full bg-blue-600 hover:bg-blue-700 p-2 mt-2"
+						>Resend Confirmation Email</button
+					>
 				</div>
 			</form>
 		</div>
 		<div>
 			<a href="/login">
-				<button class="w-full bg-blue-600 hover:bg-blue-700 p-2 my-2"
-					>Already registered ? Login</button
-				>
+				<button class="w-full bg-blue-600 hover:bg-blue-700 p-2 my-2">Login</button>
 			</a>
 		</div>
 	</div>

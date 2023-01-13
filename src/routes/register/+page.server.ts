@@ -19,9 +19,9 @@ export const actions: Actions = {
             })
         })
 
-        const json = await response.json()
-        const result = JSON.stringify(json)
+        let toJson = await response.json();
+        toJson.status = response.status;
 
-        console.log(result)
+        return toJson;
     }
 };

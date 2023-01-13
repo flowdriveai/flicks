@@ -1,18 +1,18 @@
 import type { Actions } from './$types';
  
 export const actions: Actions = {
-    default: async ({ request }) => {
+    default: async ({ request, url }) => {
         const data = await request.formData();
-        const email = data.get('email');
         const password = data.get('password');
+        const token = url.searchParams.get('token')
 
-        const response = await fetch('https://staging-api.flowdrive.ai/auth/login', {
+        const response = await fetch('https://staging-api.flowdrive.ai/auth/reset_password', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                'email': email,
+                'token': token,
                 'password': password
             })
         })
