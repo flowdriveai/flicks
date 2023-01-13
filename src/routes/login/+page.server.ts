@@ -1,7 +1,8 @@
+import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
  
 export const actions: Actions = {
-    default: async ({ request }) => {
+    default: async ({ fetch, request }) => {
         const data = await request.formData();
         const email = data.get('email');
         const password = data.get('password');
@@ -19,6 +20,10 @@ export const actions: Actions = {
 
         let toJson = await response.json();
         toJson.status = response.status;
+
+        if (toJson.success) {
+            throw redirect(300, '/')
+        }
 
         return toJson;
     }

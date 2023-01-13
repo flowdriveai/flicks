@@ -1,7 +1,7 @@
 import type { Actions } from './$types';
  
 export const actions: Actions = {
-    default: async ({ request, url }) => {
+    default: async ({ fetch, request, url }) => {
         const data = await request.formData();
         const password = data.get('password');
         const token = url.searchParams.get('token')
