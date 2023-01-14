@@ -2,7 +2,7 @@ import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
  
 export const actions: Actions = {
-    default: async ({ fetch, request }) => {
+    default: async ({ fetch, request, cookies }) => {
         const data = await request.formData();
         const email = data.get('email');
         const password = data.get('password');
@@ -18,11 +18,16 @@ export const actions: Actions = {
             })
         })
 
-        let toJson = await response.json();
+        const toJson = await response.json();
         toJson.status = response.status;
 
         if (toJson.success) {
-            throw redirect(300, '/')
+            cookies.set('auth_token', toJson.message.auth_token, {
+                httpOnly: true,
+                path: '/',
+                maxAge: 60 * 60 * 24 * 7
+            })
+            throw redirect(302, '/')
         }
 
         return toJson;
