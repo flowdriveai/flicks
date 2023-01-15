@@ -42,17 +42,17 @@
 						</a>
 					</div>
 					<div class="flex justify-end mb-4">
-						<a href="/resend-confirmation" class="hover:underline text-blue-500">
+						<a href="/resend-confirmation" class="hover:underline duration-300 text-blue-500">
 							<small>Resend Confirmation Email</small>
 						</a>
 					</div>
-					<button class="w-full bg-blue-600 hover:bg-blue-700 p-2 mt-2">Login</button>
+					<button class="w-full bg-blue-600 hover:bg-blue-700 duration-300 p-2 mt-2">Login</button>
 				</div>
 			</form>
 		</div>
 		<div>
 			<a href="/register">
-				<button class="w-full bg-blue-600 hover:bg-blue-700 p-2 my-2"
+				<button class="w-full bg-blue-600 hover:bg-blue-700 duration-300 p-2 my-2"
 					>Not registered ? Register</button
 				>
 			</a>

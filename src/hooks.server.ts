@@ -1,4 +1,5 @@
 import type { Handle } from '@sveltejs/kit';
+import { PUBLIC_API_URL } from '$env/static/public';
  
 export const handle = (async ({ event, resolve }) => {
     const auth_token = event.cookies.get('auth_token');
@@ -9,7 +10,7 @@ export const handle = (async ({ event, resolve }) => {
 
     // Refresh token or redirect to login
     try {
-        const refreshRes = await fetch('https://staging-api.flowdrive.ai/auth/refresh_token', {
+        const refreshRes = await fetch(`${PUBLIC_API_URL}/auth/refresh_token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

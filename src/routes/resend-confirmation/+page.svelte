@@ -29,7 +29,7 @@
 						id="email"
 						name="email"
 					/>
-					<button class="w-full bg-blue-600 hover:bg-blue-700 p-2 mt-2"
+					<button class="w-full bg-blue-600 hover:bg-blue-700 duration-300 p-2 mt-2"
 						>Resend Confirmation Email</button
 					>
 				</div>
@@ -37,7 +37,7 @@
 		</div>
 		<div>
 			<a href="/login">
-				<button class="w-full bg-blue-600 hover:bg-blue-700 p-2 my-2">Login</button>
+				<button class="w-full bg-blue-600 hover:bg-blue-700 duration-300 p-2 my-2">Login</button>
 			</a>
 		</div>
 	</div>

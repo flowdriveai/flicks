@@ -1,3 +1,4 @@
+import { PUBLIC_API_URL } from '$env/static/public';
 import type { Actions } from './$types';
  
 export const actions: Actions = {
@@ -5,7 +6,7 @@ export const actions: Actions = {
         const data = await request.formData();
         const email = data.get('email');
 
-        const response = await fetch('https://staging-api.flowdrive.ai/auth/confirm', {
+        const response = await fetch(`${PUBLIC_API_URL}/auth/confirm`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,3 +1,4 @@
+import { PUBLIC_API_URL } from '$env/static/public';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
  
@@ -6,7 +7,7 @@ export const load = (async ({ cookies, fetch }) => {
 
     // Logout
     try {
-        const _ = await fetch('https://staging-api.flowdrive.ai/auth/logout', {
+        const _ = await fetch(`${PUBLIC_API_URL}/auth/logout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

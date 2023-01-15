@@ -1,13 +1,14 @@
 import { redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
- 
+import { PUBLIC_API_URL } from '$env/static/public';
+
 export const actions: Actions = {
     default: async ({ fetch, request, cookies }) => {
         const data = await request.formData();
         const email = data.get('email');
         const password = data.get('password');
 
-        const response = await fetch('https://staging-api.flowdrive.ai/auth/login', {
+        const response = await fetch(`${PUBLIC_API_URL}/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
