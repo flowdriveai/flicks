@@ -10,7 +10,7 @@
 		<a class="font-extrabold" href="/">Flowdrive.ai</a>
 		<div class="flex gap-x-4">
 			{#if data.email}
-				<div>{data.email}</div>
+				<div class="font-mono">{data.email}</div>
 				<a
 					href="/logout"
 					class="pl-5 text-red-500 border-red-500 hover:text-red-600 duration-300"
