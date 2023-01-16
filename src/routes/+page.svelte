@@ -6,6 +6,7 @@
 
 	let previousDriveButton: Element | null = null;
 	let uid: string | null = null;
+	$: url = null;
 
 	function selectDrive(id: string) {
 		let driveButton: Element | null = document.getElementById(id);
@@ -13,6 +14,9 @@
 		previousDriveButton?.classList.remove('bg-blue-600');
 		previousDriveButton = driveButton;
 		uid = id;
+
+		let _drives = data.drives;
+		url = _drives.find((drive: any) => drive.timestamp === id).url;
 	}
 </script>
 
@@ -35,8 +39,13 @@
 				<div>&#8592; Choose a Drive</div>
 			</div>
 		{:else}
-			<div class="w-4/5 flex justify-center items-center text-3xl text-white font-extrabold">
-				<div>Viewing {uid}</div>
+			<div class="w-4/5 flex flex-col items-center text-3xl text-white font-extrabold">
+				<div class="p-10">Viewing {uid}</div>
+				{#key url}
+					<video controls width="700">
+						<source src={url} />
+					</video>
+				{/key}
 			</div>
 		{/if}
 	</div>
