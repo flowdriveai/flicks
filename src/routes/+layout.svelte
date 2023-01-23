@@ -7,10 +7,16 @@
 
 <nav class="text-white  border-b-2 border-b-white/20">
 	<div class="flex justify-between py-6 px-10">
-		<a class="font-extrabold" href="/">Flowdrive.ai</a>
+		<a
+			class="font-extrabold text-xl bg-gradient-to-r bg-clip-text  text-transparent 
+            from-indigo-500 via-purple-500 to-pink-500
+            animate-text
+            "
+			href="/">Flowdrive.ai</a
+		>
 		<div class="flex gap-x-4">
 			{#if data.email}
-				<div class="font-mono">{data.email}</div>
+				<div>{data.email}</div>
 				<a
 					href="/logout"
 					class="pl-5 text-red-500 border-red-500 hover:text-red-600 duration-300"
