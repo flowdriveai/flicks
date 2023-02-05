@@ -21,6 +21,6 @@ export const load = (async ({ cookies, fetch }) => {
     // Delete the cookie
     cookies.delete('auth_token')
 
-    throw redirect(302, '/login')
+    throw redirect(302, '/auth/login')
 
 }) satisfies PageServerLoad;

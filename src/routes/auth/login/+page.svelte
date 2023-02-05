@@ -1,6 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
-	import '../../app.css';
+	import '../../../app.css';
 	/**
 	 * @type {any}
 	 */
@@ -8,7 +8,7 @@
 </script>
 
 <main class="container flex flex-col mx-auto p-10 justify-center max-w-md">
-	<h1 class="text-2xl font-bold text-center p-5">Register</h1>
+	<h1 class="text-2xl font-bold text-center p-5">Login</h1>
 	{#if form}
 		{#if form.success}
 			<div class="p-2 my-2 bg-green-500 text-white text-center rounded-md">{form.message}</div>
@@ -36,16 +36,24 @@
 						id="password"
 						name="password"
 					/>
-					<button class="w-full bg-blue-600 hover:bg-blue-700 duration-300 p-2 mt-2"
-						>Register</button
-					>
+					<div class="flex justify-end">
+						<a href="/auth/forgot-password" class="hover:underline text-blue-500">
+							<small>Forgot Password ?</small>
+						</a>
+					</div>
+					<div class="flex justify-end mb-4">
+						<a href="/auth/resend-confirmation" class="hover:underline duration-300 text-blue-500">
+							<small>Resend Confirmation Email</small>
+						</a>
+					</div>
+					<button class="w-full bg-blue-600 hover:bg-blue-700 duration-300 p-2 mt-2">Login</button>
 				</div>
 			</form>
 		</div>
 		<div>
-			<a href="/login">
+			<a href="/auth/register">
 				<button class="w-full bg-blue-600 hover:bg-blue-700 duration-300 p-2 my-2"
-					>Already registered ? Login</button
+					>Not registered ? Register</button
 				>
 			</a>
 		</div>

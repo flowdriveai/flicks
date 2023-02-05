@@ -4,8 +4,9 @@ import { PUBLIC_API_URL } from '$env/static/public';
 export const handle = (async ({ event, resolve }) => {
     const auth_token = event.cookies.get('auth_token');
 
-    if (auth_token === undefined && event.url.pathname === "/") {
-        return Response.redirect(`${event.url.origin}/login`, 302)
+    // First time user
+    if (auth_token === undefined && !(event.url.pathname.includes("auth"))) {
+        return Response.redirect(`${event.url.origin}/auth/login`, 302)
     }
 
     // Refresh token or redirect to login
@@ -21,25 +22,21 @@ export const handle = (async ({ event, resolve }) => {
             })
         });
         const refreshToJson = await refreshRes.json()
-        if (refreshToJson.success == true) {
+        if (refreshToJson.success) {
             event.cookies.set('auth_token', refreshToJson.message.auth_token, {
                 path: '/',
                 httpOnly: true,
                 maxAge: 60 * 60 * 24 * 7
             })
-            if (event.url.pathname !== "/logout" && event.url.pathname !== "/") {
-                return Response.redirect(`${event.url.origin}`, 302)
-            }
+            return resolve(event)
         } else {
-            if (event.url.pathname === "/") {
-                return Response.redirect(`${event.url.origin}/login`, 302)
+            if (!(event.url.pathname.includes("auth"))) {
+                return Response.redirect(`${event.url.origin}/auth/login`, 302)
             }
         }
     } catch (err) {
         console.log(err)
     }
  
-    const response = await resolve(event);
-    return response;
-
+    return resolve(event);
 }) satisfies Handle;
