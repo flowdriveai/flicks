@@ -28,7 +28,7 @@
 	</div>
 </nav>
 <slot />
-{#if $page.url.pathname !== '/'}
+{#if $page.url.pathname.includes("auth")}
 	<footer class="flex flex-row-reverse p-4 pt-8 justify-center text-white/80">
 		<hr class="bg-white" />
 		<p class="text-xs">Flowdrive.ai, India</p>
