@@ -8,8 +8,12 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter()
-	}
+		adapter: adapter(),
+		alias: {
+			'stores': './src/stores',
+			'app.css': './src/app.css'
+		}
+	},
 };
 
 export default config;

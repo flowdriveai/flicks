@@ -2,20 +2,30 @@
 	import type { LayoutData } from './$types';
 	import '../../app.css';
 	import { goto } from '$app/navigation';
+    import { browser } from '$app/environment';
+    import { selectedDriveId } from 'stores';
+	import { redirect } from '@sveltejs/kit';
 
 	export let data: LayoutData;
 
 	let previousDriveButton: Element | null = null;
-	let uid: string | null = null;
+
+    if (browser) {
+        selectedDriveId.subscribe((id: string) => {
+            selectDrive(id);
+        })
+    }
 
 	async function selectDrive(id: string) {
 		let driveButton: Element | null = document.getElementById(id);
 		driveButton?.classList.add('bg-blue-600');
 		previousDriveButton?.classList.remove('bg-blue-600');
 		previousDriveButton = driveButton;
-		uid = id;
 
-        goto(`/drive/${uid}`)
+        if (id !== '') {
+            // throw redirect(302, `/drive/${id}`)
+            goto(`/drive/${id}`)
+        }
 	}
 </script>
 
@@ -26,7 +36,7 @@
                 <button
                     id={drive.drive_id}
                     class="text-left hover:bg-blue-700 duration-300 py-5 px-10"
-                    on:click|preventDefault={() => selectDrive(drive.drive_id)}
+                    on:click|preventDefault={() => selectedDriveId.set(drive.drive_id)}
                 >
                     <div class="font-bold">
                         {new Date(drive.started_on).toLocaleDateString('en-us', {
