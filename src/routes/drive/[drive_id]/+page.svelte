@@ -10,6 +10,24 @@
     export let data: PageData;
     $: ({ driveResponse: driveFetchResponse } = data)
     $: ({ message: driveData } = driveFetchResponse)
+
+    async function toggleShare() {
+        const response = await fetch('/drive/share', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'drive_id': driveData.drive_id,
+                    'shared': !driveData.shared
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+        });
+
+        const toJson = await response.json()
+        if (toJson.success == true) {
+            driveData.shared = toJson.message.shared
+        }
+    }
 </script>
 
 {#key driveFetchResponse}
@@ -40,21 +58,9 @@
                 </a>
                 {#if driveData.owned}
                     {#if driveData.shared}
-                        <a
-                            href={driveData.url_matrix.qlog}
-                            class="text-red-500 grow hover:text-white hover:bg-red-600 duration-300 text-center"
-                            download
-                        >
-                                <button class="text-base font-normal grow py-5 px-10">Unshare Drive</button>
-                        </a>
+                        <button class="text-red-500 grow hover:text-white hover:bg-red-600 duration-300 text-center text-base font-normal grow py-5 px-10" on:click|preventDefault={toggleShare}>Unshare Drive</button>
                     {:else}
-                    <a
-                        href={driveData.url_matrix.qlog}
-                        class="text-green-500 grow hover:text-white hover:bg-green-600 duration-300 text-center"
-                        download
-                    >
-                            <button class="text-base font-normal grow py-5 px-10">Share Drive</button>
-                    </a>
+                        <button class="text-green-500 grow hover:text-white hover:bg-green-600 duration-300 text-center text-base font-normal grow py-5 px-10" on:click|preventDefault={toggleShare}>Share Drive</button>
                     {/if}
                 {/if}
             </div>
