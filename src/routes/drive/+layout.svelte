@@ -22,7 +22,6 @@
 		previousDriveButton = driveButton;
 
         if (id !== '') {
-            // throw redirect(302, `/drive/${id}`)
             goto(`/drive/${id}`)
         }
 	}

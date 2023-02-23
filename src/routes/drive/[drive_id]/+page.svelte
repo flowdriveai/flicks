@@ -33,38 +33,60 @@
 {#key driveFetchResponse}
 {#if driveFetchResponse.success === true}
 	<div
-		class="w-4/5 flex flex-col items-center text-3xl text-white font-extrabold divide-y-2 divide-white/20"
+		class="w-3/5 flex flex-col items-center text-3xl text-white font-extrabold divide-y-2 divide-white/20"
 	>
-            <div class="h-5/6 p-10 flex">
+            <div class="m-auto flex">
                 <video controls width="700">
                     <source src={driveData.url_matrix.fcam} />
                 </video>
             </div>
 
-            <div class="flex mt-auto min-w-full divide-x-2 divide-white/20">
+	</div>
+    <div class="justify-between flex flex-col w-1/5 divide-y-2 divide-white/20">
+            <div class="flex min-w-full items-center">
+                <div class="p-5">
+                    <div class="pb-5">
+                        <div class="text-xs text-white/60">Started on</div>
+                        <div>{new Date(driveData.started_on).toLocaleDateString('en-us', {weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true})}</div>
+                    </div>
+
+                    <div class="pb-5">
+                        <div class="text-xs text-white/60">Duration</div>
+                        <div>{driveData.duration}</div>
+                    </div>
+
+                    <div class="pb-5">
+                        <div class="text-xs text-white/60">Device ID</div>
+                        <div class="font-mono">{driveData.device_id}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col mt-auto min-w-full divide-y-2 divide-white/20">
                 <a
                     href={driveData.url_matrix.qlog}
-                    class="grow hover:bg-blue-700 duration-300 text-center"
+                    class=" hover:bg-blue-700 duration-300 text-center"
                     download
                 >
-                    <button class="text-base font-normal py-5 px-10">Get Qlog</button>
+                    <button class="text-sm font-normal py-5 px-10">Get Qlog</button>
                 </a>
                 <a
                     href={driveData.url_matrix.ecam}
-                    class="grow hover:bg-blue-700 duration-300 text-center"
+                    class=" hover:bg-blue-700 duration-300 text-center"
                     download
                 >
-                    <button class="text-base font-normal grow py-5 px-10">Get Ecam</button>
+                    <button class="text-sm font-normal grow py-5 px-10">Get Ecam</button>
                 </a>
                 {#if driveData.owned}
                     {#if driveData.shared}
-                        <button class="text-red-500 grow hover:text-white hover:bg-red-600 duration-300 text-center text-base font-normal grow py-5 px-10" on:click|preventDefault={toggleShare}>Unshare Drive</button>
+                        <button class="text-red-500  hover:text-white hover:bg-red-600 duration-300 text-center text-sm font-normal grow py-5 px-10" on:click|preventDefault={toggleShare}>Unshare Drive</button>
                     {:else}
-                        <button class="text-green-500 grow hover:text-white hover:bg-green-600 duration-300 text-center text-base font-normal grow py-5 px-10" on:click|preventDefault={toggleShare}>Share Drive</button>
+                        <button class="text-green-500 hover:text-white hover:bg-green-600 duration-300 text-center text-sm font-normal grow py-5 px-10" on:click|preventDefault={toggleShare}>Share Drive</button>
                     {/if}
+                {:else}
+                        <button disabled class="text-white/60 text-center text-sm font-normal grow py-5 px-10">Shared</button>
                 {/if}
             </div>
-	</div>
+    </div>
 {:else}
 	<div class="w-4/5 flex justify-center items-center text-3xl text-red-500/30 font-extrabold">
 		<div>{driveFetchResponse.message}</div>
