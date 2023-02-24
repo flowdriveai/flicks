@@ -12,7 +12,7 @@
             from-indigo-500 via-purple-500 to-pink-500
             animate-text
             "
-			href="/">Flowdrive.ai</a
+			href="/">Flicks</a
 		>
 		<div class="flex gap-x-4">
 			{#if data.email}
