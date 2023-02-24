@@ -1,8 +1,9 @@
 <script lang="ts">
 	import 'app.css';
     import { selectedDriveId } from 'stores';
-    import { page } from '$app/stores';
+    import { page, navigating } from '$app/stores';
     import type { PageData } from './$types';
+    import { ScaleOut } from 'svelte-loading-spinners';
 
     // update selected drive store
     selectedDriveId.set($page.params.drive_id)
@@ -30,6 +31,11 @@
     }
 </script>
 
+{#if $navigating}
+    <div class="w-4/5 flex justify-center items-center text-3xl text-white/20 font-extrabold">
+        <ScaleOut size="120" color="#FFFFFF1a" unit="px" duration="0.75s" />
+    </div>
+{:else}
 {#key driveFetchResponse}
 {#if driveFetchResponse.success === true}
 	<div
@@ -93,3 +99,4 @@
 	</div>
 {/if}
 {/key}
+{/if}
