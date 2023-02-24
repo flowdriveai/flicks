@@ -5,7 +5,7 @@
     import type { PageData } from './$types';
 
     // update selected drive store
-    selectedDriveId.update(_ => $page.params.drive_id)
+    selectedDriveId.set($page.params.drive_id)
 
     export let data: PageData;
     $: ({ driveResponse: driveFetchResponse } = data)
