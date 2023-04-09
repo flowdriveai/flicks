@@ -16,7 +16,11 @@
 		>
 		<div class="flex gap-x-4">
 			{#if data.email}
-				<div>{data.email}</div>
+				<div>
+					<a href="/user" class="hover:text-white/75">
+						{data.email}
+					</a>
+				</div>
 				<a
 					href="/logout"
 					class="pl-5 text-red-500 border-red-500 hover:text-red-600 duration-300"
@@ -28,7 +32,7 @@
 	</div>
 </nav>
 <slot />
-{#if $page.url.pathname.includes("auth")}
+{#if $page.url.pathname.includes('auth')}
 	<footer class="flex flex-row-reverse p-4 pt-8 justify-center text-white/80">
 		<hr class="bg-white" />
 		<p class="text-xs">Flowdrive.ai, India</p>
