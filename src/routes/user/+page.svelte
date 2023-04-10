@@ -2,6 +2,7 @@
 	import 'app.css';
 	import type { LayoutData } from '../$types';
 	import type { PageData } from './$types';
+	import dateConvert from '../../modules/dateConvert';
 
 	export let data: PageData;
 </script>
@@ -28,7 +29,7 @@
 			<div class="font-bold">Plan Expiry</div>
 			<div class="flex font-mono">
 				<div>
-					{new Date(data.plan_expires_at).toLocaleDateString('en-us', {
+					{dateConvert(data.plan_expires_at).toLocaleDateString('en-us', {
 						year: 'numeric',
 						month: 'short',
 						day: 'numeric'
@@ -42,7 +43,7 @@
 		<div class="font-bold">Registered On</div>
 		<div class="flex font-mono">
 			<div>
-				{new Date(data.registered_on).toLocaleTimeString('en-US', {
+				{dateConvert(data.registered_on).toLocaleTimeString('en-US', {
 					weekday: 'long',
 					month: 'short',
 					day: 'numeric',
@@ -57,7 +58,7 @@
 		<div class="font-bold">Last Login</div>
 		<div class="flex font-mono">
 			<div>
-				{new Date(data.last_login_at).toLocaleTimeString('en-US', {
+				{dateConvert(data.last_login_at).toLocaleTimeString('en-US', {
 					weekday: 'long',
 					month: 'short',
 					day: 'numeric',
