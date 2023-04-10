@@ -4,8 +4,6 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
-	console.log('page data: ', data);
 </script>
 
 <main class="container flex flex-col mx-auto p-10 justify-center max-w-md relative">
@@ -16,7 +14,10 @@
 		<div class="font-bold">Plan</div>
 		<div class="flex font-mono">
 			<div>{data.plan}</div>
-			<a class="text-green-600 absolute left-full hover:text-green-800 font-sans" href="#">
+			<a
+				class="text-green-600 absolute left-full hover:text-green-800 font-sans"
+				href="/user/subscribe"
+			>
 				Change</a
 			>
 		</div>
