@@ -14,16 +14,17 @@
             "
 			href="/">Flicks</a
 		>
-		<div class="flex gap-x-4">
+		<div class="flex gap-x-4 place-content-center place-items-center">
 			{#if data.email}
-				<div>
-					<a href="/user" class="hover:text-white/75">
-						{data.email}
-					</a>
-				</div>
+				<a
+					href="/user"
+					class="p-2 hover:text-black hover:bg-white duration-150 border-white/40 shadow-sm text-white rounded-sm"
+				>
+					{data.email} &rightarrow;
+				</a>
 				<a
 					href="/logout"
-					class="pl-5 text-red-500 border-red-500 hover:text-red-600 duration-300"
+					class="p-2 hover:text-black hover:bg-red-500 text-red-500 border-red-500/40 shadow-sm rounded-sm duration-150"
 					data-sveltekit-reload
 					>Logout
 				</a>
