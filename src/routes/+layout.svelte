@@ -6,7 +6,7 @@
 </script>
 
 <nav class="text-white  border-b-2 border-b-white/20">
-	<div class="flex justify-between py-6 px-10">
+	<div class="flex justify-between py-6 px-10 place-content-center place-items-center">
 		<a
 			class="font-extrabold text-xl bg-gradient-to-r bg-clip-text  text-transparent 
             from-indigo-500 via-purple-500 to-pink-500
