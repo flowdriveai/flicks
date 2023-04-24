@@ -75,7 +75,10 @@
 		<h1 class="text-xl font-bold py-5">Devices</h1>
 		{#each data.devices as device}
 			<div class="flex place-content-between py-1">
-				<div class="font-mono font-bold">{device.model_name}</div>
+				<div class="flex flex-col">
+					<div class="font-mono font-bold pb-1">{device.model_name}</div>
+					<div class="font-mono text-xs">Device ID: {device.device_id}</div>
+				</div>
 				<div class="flex">
 					<a
 						class="text-red-600 hover:text-red-800"
